@@ -11,7 +11,7 @@
     android:elevation="5dp"
     android:padding="16dp"
     android:layout_margin="8dp"
-    card_view:cardBackgroundColor="#c6e2ff"
+    card_view:cardBackgroundColor="@color/primary_darker"
     >
 
     <TextView
@@ -21,15 +21,15 @@
         android:text="Text"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:paddingLeft="10dp"/>
-
-    <ListView
+        android:paddingLeft="50dp"
+        android:textColor="#ffffff"
+        android:layout_gravity="center"/>
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="35dp"
-        android:background="#ffffff"
-        />
-
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        android:background="#c6e2ff"/>
+  
 
 </android.support.v7.widget.CardView>
 

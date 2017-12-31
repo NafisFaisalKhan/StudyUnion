@@ -19,13 +19,13 @@
 
 
             <EditText
-                android:id="@+id/post_dialog_edittext"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Type your post"
-                android:maxLines="6"
-                android:paddingLeft="15dp"/>
+            android:id="@+id/post_dialog_edittext"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Type your post"
+            android:maxLines="6"
+            android:paddingLeft="15dp"/>
 
             <ImageView
                 android:id="@+id/post_dialog_send_imageview"

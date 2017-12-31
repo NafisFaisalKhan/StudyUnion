@@ -43,6 +43,8 @@
         </activity>
         <activity android:name=".FaqCommentActivity">
         </activity>
+        <activity android:name=".card_list_activity">
+        </activity>
     </application>
 
 </manifest>

@@ -66,8 +66,6 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
                 GroupRoom selectedGroup = (GroupRoom) parent.getAdapter().getItem(position);
 
-
-
                 if(permission(selectedGroup.getSelectedUsers())) {
 
                     Intent intent = new Intent(getApplicationContext(), GroupChat.class);
@@ -133,12 +131,10 @@ public class GroupActivity extends AppCompatActivity implements View.OnClickList
 
         }
     };
+       // groupList.setEmptyView(findViewById(R.id.empty_view));
         groupList.setAdapter(adapter);
 
-
-
     }
-
 
     @Override
     public void onClick(View v) {

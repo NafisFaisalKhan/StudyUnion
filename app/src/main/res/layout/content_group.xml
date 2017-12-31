@@ -11,6 +11,8 @@
         android:layout_height="match_parent"
         android:id="@+id/group_list"
         tools:layout_editor_absoluteX="121dp"
-        tools:layout_editor_absoluteY="68dp"/>
+        tools:layout_editor_absoluteY="68dp"
+        android:layout_margin="15dp"
+        />
 
 </RelativeLayout>

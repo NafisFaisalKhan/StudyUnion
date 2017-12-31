@@ -1,9 +1,11 @@
 package com.icebug.android.studyunion;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -37,18 +39,47 @@ class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView cardType;
+        ListView list;
 
         public ViewHolder(View itemView) {
             super(itemView);
+
             cardType = (TextView)itemView.findViewById(R.id.card_type);
+
             itemView.setOnClickListener(this);
+
         }
 
-
-        //make new activity for editing or adding events to cards
         @Override
         public void onClick(View v) {
 
+            if(arrayList.get(getAdapterPosition()).equals("Assignments") ){
+
+                Intent intent = new Intent(v.getContext(), card_list_activity.class);
+                intent.putExtra("CardHeader","Assignments");
+
+                v.getContext().startActivity(intent);
+
+            };
+
+            if(arrayList.get(getAdapterPosition()).equals("Exams") ){
+
+                Intent intent = new Intent(v.getContext(), card_list_activity.class);
+                intent.putExtra("CardHeader","Exams");
+
+                v.getContext().startActivity(intent);
+
+            };
+
+            if(arrayList.get(getAdapterPosition()).equals("Calender") ){
+
+
+
+            };
+
         }
+
+
     }
+
 }

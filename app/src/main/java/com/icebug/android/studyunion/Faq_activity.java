@@ -4,7 +4,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -13,16 +13,20 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseListAdapter;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class Faq_activity extends FragmentActivity implements View.OnClickListener {
+public class Faq_activity extends AppCompatActivity  implements View.OnClickListener {
 
     private FloatingActionButton fab;
     private ListView postList;
     private FirebaseListAdapter<FaqPost> adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_faq_activity);
+
+        getSupportActionBar().setTitle("FAQ");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         fab = (FloatingActionButton)findViewById(R.id.faq_fab);
 
@@ -33,6 +37,11 @@ public class Faq_activity extends FragmentActivity implements View.OnClickListen
             public void onClick(View v) {
                 Fragment fragment = new Fragment();
                 PostCreateDialogue dialog = new PostCreateDialogue();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("Type","FAQ");
+
+                dialog.setArguments(bundle);
                 dialog.show(getSupportFragmentManager(),"Post");
             }
 
@@ -56,6 +65,12 @@ public class Faq_activity extends FragmentActivity implements View.OnClickListen
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

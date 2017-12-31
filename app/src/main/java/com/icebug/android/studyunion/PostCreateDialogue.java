@@ -26,26 +26,66 @@ public class PostCreateDialogue extends DialogFragment implements View.OnClickLi
     private ProgressDialog mProgressDialog;
     private View mRootView;
 
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         mProgressDialog = new ProgressDialog(getContext());
 
-        mPost = new FaqPost();
-        mRootView = getActivity().getLayoutInflater().inflate(R.layout.post_create_dialogue, null);
-        mRootView.findViewById(R.id.post_dialog_send_imageview).setOnClickListener(this);
+        if(getArguments().get("Type").equals("FAQ")) {
+
+            mPost = new FaqPost();
+            mRootView = getActivity().getLayoutInflater().inflate(R.layout.post_create_dialogue, null);
+            mRootView.findViewById(R.id.post_dialog_send_imageview).setOnClickListener(this);
+        }
+
+        if(getArguments().get("Type").equals("Add")){
+
+            mRootView = getActivity().getLayoutInflater().inflate(R.layout.edit_type_dialogue, null);
+            mRootView.findViewById(R.id.post_dialog_send_imageview).setOnClickListener(this);
+        }
+
         builder.setView(mRootView);
         return builder.create();
+
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.post_dialog_send_imageview:
-                sendPost();
-                break;
+
+                if(getArguments().get("Type").equals("FAQ")) {
+                    sendPost();
+                }
+
+                if(getArguments().get("Type").equals("Add")){
+                    editType();
+                }
+            break;
+
         }
+    }
+
+    private void editType() {
+
+        mProgressDialog.setMessage("Adding...");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.setIndeterminate(true);
+        mProgressDialog.show();
+
+      //  ArrayList<String> info = new ArrayList<String>();
+
+        TextView type = (TextView) mRootView.findViewById(R.id.post_dialog_edittext);
+        TextView dueDate = (TextView) mRootView.findViewById(R.id.type_due_date);
+
+        card_list_activity.events.add(type.getText().toString()+","+dueDate.getText().toString());
+
+        mProgressDialog.dismiss();
+
+        dismiss();
+
     }
 
     private void sendPost() {
